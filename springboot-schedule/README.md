@@ -1,8 +1,18 @@
-# SpringBoot @Scheduled ¶¨Ê±ÈÎÎñdemo
+# SpringBoot @Scheduled å®šæ—¶ä»»åŠ¡demo
 
-@interface ScheduledÏê½â£º
->String cron() default "";//¶¨Ê±±í´ïÊ½
->String zone() default "";//Ê±Çø
->long fixedDelay() default -1;//µÚÒ»´Îµ÷ÓÃÍê³Éºó£¬ÑÓ³Ù¶à³¤Ê±¼äÔÙÖ´ÐÐ¸Ã·½·¨
->long fixedRate() default -1;//Ã¿¸ô¶à¾ÃÖ´ÐÐÒ»´Î
->long initialDelay() default -1;//³õÊ¼»¯ºó¸ô¶à¾Ã¿ªÊ¼Ö´ÐÐ
+@interface Scheduledè¯¦è§£ï¼š
+
+//å®šæ—¶è¡¨è¾¾å¼
+>String cron() default "";
+
+//æ—¶åŒº
+>String zone() default "";
+
+//ç¬¬ä¸€æ¬¡è°ƒç”¨å®ŒæˆåŽï¼Œå»¶è¿Ÿå¤šé•¿æ—¶é—´å†æ‰§è¡Œè¯¥æ–¹æ³•
+>long fixedDelay() default -1;
+
+//æ¯éš”å¤šä¹…æ‰§è¡Œä¸€æ¬¡
+>long fixedRate() default -1;
+
+//åˆå§‹åŒ–åŽéš”å¤šä¹…å¼€å§‹æ‰§è¡Œ
+>long initialDelay() default -1;
