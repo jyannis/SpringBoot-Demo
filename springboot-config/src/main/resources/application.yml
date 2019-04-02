@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+
+student:
+  name: Jack
+  age: 18
+
+bean:
+  str: 字符串可以不加引号
+  specialStr: "双引号可以转义\n特殊字符"
+  specialStr2: '单引号直接输出\n特殊字符'
+  flag: false
+  num: 666
+  Dnum: 88.88
+  list:
+    - one
+    - two
+    - two
+  set: [1,2,2,3]
+  map: {k1: v1, k2: v2}
+  students:
+    - name: John
+      age: 17
+    - name: Alice
+      age: 16
