@@ -1,0 +1,4 @@
+# SpringBoot集成Redis
+在RedisUtil工具类中，涵盖了Jedis可用的各种方法
+
+在Controller中是对zset有序集合的一个简单测试
