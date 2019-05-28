@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+#≈‰÷√swagger2 «∑Òø…”√
+swagger:
+  enable: true
