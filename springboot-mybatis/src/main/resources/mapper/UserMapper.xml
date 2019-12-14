@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--指定该映射文件的命名空间（对应哪个mapper）-->
+<mapper namespace="undestiny.springbootmybatis.mapper.UserMapper">
+
+  <!--keyProperty指定传入对象的成员变量，keyColumn指定数据库中的主键-->
+  <!--useGeneratedKeys令 MyBatis 使用 JDBC 的 getGeneratedKeys 方法来取出由数据库内部生成的主键-->
+  <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO user(id,username,password) VALUES (#{id},#{username},#{password});
+  </insert>
+
+  <select id="getUserById" resultType="undestiny.springbootmybatis.entity.User">
+    SELECT * FROM user WHERE id=#{id};
+  </select>
+
+  <select id="getUserById2" resultType="undestiny.springbootmybatis.entity.User">
+    SELECT * FROM user WHERE id=#{id};
+  </select>
+
+  <select id="getUserListByUsername" resultMap="userList">
+    SELECT * FROM user WHERE username=#{username};
+  </select>
+
+    <select id="getUserListOrderly" resultMap="userList">
+        SELECT * FROM user ORDER BY ${order_by_sql};
+    </select>
+
+  <delete id="deleteUserById">
+    DELETE FROM user WHERE id=#{id};
+  </delete>
+
+  <update id="updateUsernameById">
+    UPDATE user SET username=#{username} where id=#{id};
+  </update>
+
+
+  <!-- resultMap最终还是要将结果映射到pojo上，type就是指定映射到哪一个pojo -->
+  <!-- id：设置ResultMap的id -->
+  <resultMap type="undestiny.springbootmybatis.entity.User" id="userList">
+    <!-- 定义主键 ,非常重要。如果是多个字段,则定义多个id -->
+    <!-- property：主键在pojo中的属性名 -->
+    <!-- column：主键在数据库中的列名 -->
+    <id property="id" column="id" />
+
+    <!-- 定义普通属性 -->
+    <result property="username" column="username" />
+    <result property="password" column="password" />
+  </resultMap>
+ 
+</mapper>
