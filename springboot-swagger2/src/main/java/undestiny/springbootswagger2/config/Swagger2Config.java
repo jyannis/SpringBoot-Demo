@@ -16,20 +16,36 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swagger2Config {
 
+
+    /**
+     * 可以写多个docket，相当于在线swagger文档右上角的spec
+     */
     @Bean
-    public Docket createRestApi() {
+    public Docket createModuleAApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("a")//如果要写多个docket，就需要为它们指定不同groupName
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("undestiny.springbootswagger2"))//设定扫描范围
+                .apis(RequestHandlerSelectors.basePackage("undestiny.springbootswagger2.controller.a"))//设定扫描范围
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    @Bean
+    public Docket createModuleBApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("b")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("undestiny.springbootswagger2.controller.b"))//设定扫描范围
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("my API Documentation")
-                .description("springboot集成swagger2实现接口文档")
+                .title("my API Documentation")//文档名
+                .description("springboot集成swagger2实现接口文档")//文档描述
                 //.termsOfServiceUrl("接口文档数据源的url")//数据源（默认http://localhost:8080/v2/api-docs）
                 .version("1.0")
                 .build();
